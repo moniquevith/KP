@@ -1,0 +1,11 @@
+spring:
+  application:
+    name: KP
+  datasource:
+    url: jdbc:postgresql://localhost:5432/mvith
+    username: mvith
+    password:
+  jpa:
+    hibernate:
+      ddl-auto: update    # auto-creates tables based on your models
+      show-sql: true      # prints SQL queries in console

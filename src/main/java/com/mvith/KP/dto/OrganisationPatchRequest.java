@@ -1,6 +1,7 @@
 package com.mvith.KP.dto;
 
 public class OrganisationPatchRequest {
+
     private String name; 
     private String description; 
     private String email; 

@@ -1,5 +1,8 @@
 package com.mvith.KP.service;
 
+import java.util.List;
+
+import com.mvith.KP.model.ProgramType;
 import com.mvith.KP.repository.ProgramTypeRepository;
 
 public class ProgramTypeService {
@@ -10,6 +13,14 @@ public class ProgramTypeService {
     }
 
     // GET all types /programType
+    public List<ProgramType> getAllProgramTypes() {
+        return programTypeRepository.findAll();
+    }
+
     // GET a type /programType/{id}
-    // GET all programs of a single type /program/programType/{id}
+    public ProgramType getOneProgramType(Long id) {
+        return programTypeRepository.findById(id)
+            .orElseThrow(() -> new RuntimeException("Program Type not found"));
+    }
+
 }

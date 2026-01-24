@@ -80,5 +80,8 @@ public class ProgramService {
         programRepository.deleteById(id);
     }
 
-
+    // GET all programs of a single type /program/programType/{id} - e.g. all programs that do basketball
+    public List<Program> getAllProgramsOfSingleType(Long type_id) {
+        return programRepository.findbyTypeId(type_id);
+    }
 }

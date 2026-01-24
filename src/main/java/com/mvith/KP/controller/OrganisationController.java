@@ -7,6 +7,8 @@ import com.mvith.KP.dto.OrganisationCreateRequest;
 import com.mvith.KP.dto.OrganisationPatchRequest;
 import com.mvith.KP.model.Organisation;
 import com.mvith.KP.service.OrganisationService;
+import com.mvith.KP.service.ProgramService;
+import com.mvith.KP.model.Program;
 
 import java.util.List;
 
@@ -21,9 +23,11 @@ import org.springframework.web.bind.annotation.RequestBody;
 @RequestMapping("/org")
 public class OrganisationController {
     private final OrganisationService organisationService;
+    private final ProgramService programService;
 
-    public OrganisationController(OrganisationService organisationService) {
+    public OrganisationController(OrganisationService organisationService, ProgramService programService) {
         this.organisationService = organisationService;
+        this.programService = programService;
     }
 
     // GET all organisations /org
@@ -54,5 +58,11 @@ public class OrganisationController {
     @PatchMapping("/{id}")
     public Organisation patchOrganisation(@PathVariable Long id, @RequestBody OrganisationPatchRequest request) {
         return organisationService.updateOrganisation(id, request);
+    }
+
+    // GET all program in org /org/{id}/program
+    @GetMapping("/{id}/program")
+    public List<Program> getAllProgramInOrg(@PathVariable Long org_id) {
+        return programService.getAllProgramsInOrg(org_id);
     }
 }
